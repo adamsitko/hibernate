@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="Teacher" table="teachers">
+		<id name="id" column="id" type="long">
+			<generator class="native"></generator>
+		</id>
+    	
+    	<set name="classes" table="class_teacher" cascade="save-update">
+			<key column="teacher_id" />
+			<many-to-many column="class_id" class="SchoolClass" />
+		</set>
+		
+		<property name="name" column="name" type="string"></property>
+		<property name="surname" column="surname" type="string"></property>
+		<property name="pesel" column="pesel" type="string"></property>
+
+	</class>
+</hibernate-mapping>
